@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive, filterable image gallery built with HTML, CSS and JavaScript.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Frame — Image Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#gallery">Skip to gallery</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Frame home">
+      <span class="brand__mark" aria-hidden="true">F</span>
+      <span>frame<span class="brand__dot">.</span></span>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a class="header-nav__link header-nav__link--active" href="#gallery">Explore</a>
+      <a class="header-nav__link" href="#about">About</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Toggle theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42">
+        </path>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero__eyebrow"><span class="status-dot"></span> A collection of visual stories</div>
+      <h1 id="pageTitle">See the world<br><span>in frames.</span></h1>
+      <p class="hero__copy">A little inspiration for your next big idea. Explore moments, places and details worth
+        remembering.</p>
+      <a class="hero__scroll" href="#gallery">Explore collection <span aria-hidden="true">↓</span></a>
+      <div class="hero__orb hero__orb--one" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--two" aria-hidden="true"></div>
+    </section>
+
+    <section class="gallery-section" id="gallery" aria-labelledby="galleryTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Curated collection</p>
+          <h2 id="galleryTitle">The gallery<span class="heading-count" id="imageCount">08</span></h2>
+        </div>
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m16 16 4 4"></path>
+          </svg>
+          <span class="visually-hidden">Search images</span>
+          <input id="searchInput" type="search" placeholder="Search the gallery..." autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+      </div>
+
+      <div class="gallery-toolbar">
+        <div class="filter-list" role="group" aria-label="Filter images by category">
+          <button class="filter-btn filter-btn--active" type="button" data-filter="all" aria-pressed="true">All work
+            <span>08</span></button>
+          <button class="filter-btn" type="button" data-filter="nature" aria-pressed="false">Nature</button>
+          <button class="filter-btn" type="button" data-filter="architecture" aria-pressed="false">Architecture</button>
+          <button class="filter-btn" type="button" data-filter="travel" aria-pressed="false">Travel</button>
+          <button class="filter-btn" type="button" data-filter="lifestyle" aria-pressed="false">Lifestyle</button>
+        </div>
+        <p class="toolbar-note">Select a frame to view it closer <span aria-hidden="true">↗</span></p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <article class="gallery-card gallery-card--tall" data-category="nature" data-title="Quiet waters"
+          data-location="Lake Bled, Slovenia"
+          data-description="Still water, soft light and a moment of calm in the mountains.">
+          <button class="gallery-card__button" type="button" aria-label="View Quiet waters">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=85"
+              alt="Mountain landscape reflected in a calm lake" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Nature</span><strong>Quiet
+                  waters</strong><small>Lake Bled, Slovenia</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="architecture" data-title="Concrete rhythm"
+          data-location="Copenhagen, Denmark"
+          data-description="Geometry and repetition shape this modern architectural scene.">
+          <button class="gallery-card__button" type="button" aria-label="View Concrete rhythm">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1000&q=85"
+              alt="Minimal modern white architectural building" loading="lazy">
+            <span class="gallery-card__overlay"><span
+                class="gallery-card__meta"><span>Architecture</span><strong>Concrete rhythm</strong><small>Copenhagen,
+                  Denmark</small></span><span class="view-icon" aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="travel" data-title="Golden passage"
+          data-location="Marrakech, Morocco"
+          data-description="Warm tones and narrow streets invite a slower kind of exploration.">
+          <button class="gallery-card__button" type="button" aria-label="View Golden passage">
+            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1000&q=85"
+              alt="Warmly lit street in a historic city" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Travel</span><strong>Golden
+                  passage</strong><small>Marrakech, Morocco</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="lifestyle" data-title="Slow mornings"
+          data-location="Somewhere in the city" data-description="A quiet coffee break and a little room to think.">
+          <button class="gallery-card__button" type="button" aria-label="View Slow mornings">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85"
+              alt="Coffee being prepared in a bright cafe" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Lifestyle</span><strong>Slow
+                  mornings</strong><small>Somewhere in the city</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="nature" data-title="Into the wild" data-location="Dolomites, Italy"
+          data-description="A dramatic mountain range rising above a forested valley.">
+          <button class="gallery-card__button" type="button" aria-label="View Into the wild">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85"
+              alt="Dramatic mountain peaks beneath a cloudy sky" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Nature</span><strong>Into the
+                  wild</strong><small>Dolomites, Italy</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card gallery-card--tall" data-category="travel" data-title="Coastal escape"
+          data-location="Amalfi Coast, Italy"
+          data-description="Colourful buildings cling to the coastline above the sea.">
+          <button class="gallery-card__button" type="button" aria-label="View Coastal escape">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=85"
+              alt="Colourful coastal town overlooking blue water" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Travel</span><strong>Coastal
+                  escape</strong><small>Amalfi Coast, Italy</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="architecture" data-title="Lines and light"
+          data-location="Berlin, Germany" data-description="A study of clean lines, shadow and afternoon sunlight.">
+          <button class="gallery-card__button" type="button" aria-label="View Lines and light">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85"
+              alt="Modern building facade with geometric lines" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Architecture</span><strong>Lines
+                  and light</strong><small>Berlin, Germany</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+        <article class="gallery-card" data-category="lifestyle" data-title="A little pause"
+          data-location="Home, anywhere" data-description="A simple, sunlit corner made for a moment of rest.">
+          <button class="gallery-card__button" type="button" aria-label="View A little pause">
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=85"
+              alt="Minimal calm interior with warm natural light" loading="lazy">
+            <span class="gallery-card__overlay"><span class="gallery-card__meta"><span>Lifestyle</span><strong>A little
+                  pause</strong><small>Home, anywhere</small></span><span class="view-icon"
+                aria-hidden="true">↗</span></span>
+          </button>
+        </article>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>No images match your search. Try another keyword or category.</p>
+    </section>
+
+    <section class="about-strip" id="about">
+      <div>
+        <p class="section-kicker">About this project</p>
+        <h2>Every picture<br>has a <span>point of view.</span></h2>
+      </div>
+      <p>Frame is a responsive image gallery concept built with semantic HTML, modern CSS Grid and vanilla JavaScript.
+        Browse the collection, filter by category, search by title, and open any image in the lightbox.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand--footer" href="#"><span class="brand__mark" aria-hidden="true">F</span><span>frame<span
+          class="brand__dot">.</span></span></a>
+    <p>Built with care · CodeAlpha Frontend Internship Project</p>
+    <a href="#pageTitle" class="back-top">Back to top ↑</a>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <button class="lightbox__close" id="closeLightbox" type="button" aria-label="Close image viewer">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="prevImage" type="button"
+      aria-label="Previous image">‹</button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImage" src="" alt="">
+      <figcaption><span id="lightboxCategory"></span><strong id="lightboxTitle"></strong><small
+          id="lightboxLocation"></small>
+        <p id="lightboxDescription"></p>
+      </figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="nextImage" type="button" aria-label="Next image">›</button>
+    <p class="lightbox__counter" id="lightboxCounter" aria-live="polite"></p>
+  </dialog>
+</body>
+
+</html>
